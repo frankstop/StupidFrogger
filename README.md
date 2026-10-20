@@ -1,6 +1,6 @@
 # When the Dev Says, "Just One More Feature." 🐸🪂
 
-### 👉 [**▶️ Click Here to Play the Game**](./tech_stuff/index.html)
+### 👉 [**▶️ Click Here to Play the Game**](https://frankiejvaldez.com/StupidFrogger/tech_stuff/index.html)
 
 ---
 
