@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>When the dev says, "Just one more feature." — 3D Action Frogger</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐸</text></svg>" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Top Meme Banner + Live Stats + Mode Controls -->
+  <header class="top-overlay">
+    <div class="meme-banner">
+      When the dev says,<br />“Just one more feature.”
+      <span class="sub">WASD / Arrows: Move • Drag Mouse / Q,E: Camera • Click Any Move Below!</span>
+    </div>
+
+    <div class="hud-stats">
+      <div class="stat-pill">Zone: <strong id="hudZone">🌱 Start Bank</strong></div>
+      <div class="stat-pill">Style Score: <strong id="hudScore">0</strong></div>
+      <div class="stat-pill">Cars Kicked: <strong id="hudCars">0</strong></div>
+    </div>
+
+    <div class="top-buttons">
+      <button id="btnPlayFree" class="ui-btn primary" type="button">🎮 Free Play (Reset Start)</button>
+      <button id="btnWatchVideo" class="ui-btn video-btn" type="button">🎬 Replay Video Scene (P)</button>
+      <button id="btnPixelToggle" class="ui-btn" type="button">📺 240p Retro</button>
+      <button id="btnSoundToggle" class="ui-btn" type="button">🔊 Sound ON</button>
+      <button id="btnOpenFeatures" class="ui-btn" type="button">📜 Dev Commit Log</button>
+    </div>
+  </header>
+
+  <!-- Active Choreography Indicator -->
+  <div id="directorStatusPill">
+    <span>🎬 Playing Exact YouTube Short Sequence — Press WASD / Space / F Anytime to Take Control!</span>
+  </div>
+
+  <!-- Trick & Combo Pop-up -->
+  <div id="styleBanner">💥 ORYAA!! CAR KICKED INTO ORBIT +1000</div>
+
+  <!-- Live Git Commit Toast Stream -->
+  <aside id="commitFeed" aria-live="polite">
+    <div class="commit-toast">
+      <span class="commit-hash">git init frogger-3d</span>
+      <span class="commit-msg">"Just a simple frog crossing a road... wait let me add one more feature"</span>
+    </div>
+  </aside>
+
+  <!-- BOTW Circular Stamina Wheel -->
+  <svg id="staminaWheel" viewBox="0 0 44 44" aria-hidden="true">
+    <circle cx="22" cy="22" r="18" fill="rgba(0,0,0,0.55)" stroke="rgba(255,255,255,0.2)" stroke-width="4" />
+    <circle
+      id="staminaArc"
+      cx="22"
+      cy="22"
+      r="18"
+      fill="none"
+      stroke="#38ff4c"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-dasharray="113.1"
+      stroke-dashoffset="0"
+      transform="rotate(-90 22 22)"
+    />
+  </svg>
+
+  <!-- Bottom Interactive Action Deck -->
+  <nav class="bottom-deck" aria-label="Frog Abilities">
+    <button id="btnActionHop" class="action-card" type="button">
+      <span class="action-title">🐸 Classic Hop</span>
+      <span class="key-hint">Space / 1</span>
+    </button>
+    <button id="btnActionRoll" class="action-card" type="button">
+      <span class="action-title">🛡️ Dodge Roll</span>
+      <span class="key-hint">Shift / R</span>
+    </button>
+    <button id="btnActionKick" class="action-card" type="button">
+      <span class="action-title">🥋 Kick Car!</span>
+      <span class="key-hint">F / K</span>
+    </button>
+    <button id="btnActionFlip" class="action-card" type="button">
+      <span class="action-title">🤸 360° Flip</span>
+      <span class="key-hint">V / X</span>
+    </button>
+    <button id="btnActionGlider" class="action-card" type="button">
+      <span class="action-title">🪂 Paraglider</span>
+      <span class="key-hint">G / Air-Space</span>
+    </button>
+    <button id="btnCameraToggle" class="action-card" type="button">
+      <span class="action-title">🎥 Highway Angle</span>
+      <span class="key-hint">C / Mouse Drag</span>
+    </button>
+  </nav>
+
+  <!-- Light-Dismiss Modal Dialog (<dialog closedby="any">) -->
+  <dialog id="featuresDialog" closedby="any" aria-labelledby="featuresDialogTitle">
+    <form method="dialog">
+      <div class="dialog-header">
+        <h2 id="featuresDialogTitle">💀 “Just One More Feature” — Scope Creep Changelog</h2>
+      </div>
+      <ul class="feature-list">
+        <li><strong>v0.1 — 1981 Classic Frogger Hop (00:00):</strong> Crouched frog hops across lanes with 8-bit chiptune audio.</li>
+        <li><strong>v0.2 — Dark Souls 3rd-Person Dodge Roll (00:04):</strong> Camera swings 90° down the highway (`C`), boss music drops, and `Shift`/`R` triggers an i-frame somersault roll (`"Hup! Hup!"`).</li>
+        <li><strong>v0.3 — Yakuza / Street Fighter Car Dropkick (00:08):</strong> Press `F` (`"ORYAA!"`) to unleash a mid-air spinning roundhouse kick that launches 2-ton oncoming sedans tumbling into the sky.</li>
+        <li><strong>v0.4 — Max Payne / Parkour 360° Flip (00:12):</strong> Press `V` to execute an acrobatic backflip/dive-flip over traffic lanes or onto the far riverbank.</li>
+        <li><strong>v0.5 — Breath of the Wild Paraglider & Log Martial Arts (00:15–00:28):</strong> Press `G` (or `Space` in mid-air) to deploy the green-and-white BOTW Paraglider with stamina wheel, surf floating logs, chain double spin-kicks (`"UWAHH!"`), and front-flip onto the forest shore!</li>
+      </ul>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">
+        Tip: Click outside this dialog or press <code>Esc</code> to dismiss.
+      </p>
+      <button class="ui-btn primary" type="submit">Back to Game</button>
+    </form>
+  </dialog>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
