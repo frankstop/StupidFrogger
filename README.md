@@ -54,7 +54,3 @@ Without being told what was inside the video, the AI went from a raw link to a f
 - **Roundhouse Kick a Car:** `F` or `K`
 - **360° Acrobatic Flip:** `V` or `X`
 - **Replay the Original Video Scene:** `P` *(or click the buttons along the bottom of the screen!)*
-
----
-
-### [**▶️ Launch the Game (`./tech_stuff/index.html`)**](./tech_stuff/index.html)
